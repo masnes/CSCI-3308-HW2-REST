@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 import json
 import re
+import sys
 import urllib2
 import unicodedata
 
@@ -265,22 +266,36 @@ contents='''
 
 print contents
 
-for state, more_info in states_caps.items():
+print '''
+<script>
+
+$( document ).ready(function() {
+'''
+for state, state_info in states_caps.items():
     # next two lines taken from
     # http://stackoverflow.com/questions/13921910/python-urllib2-receive-json-response-from-url
-    #capital = more_info['capital']
-    #location = state + '%20' + capital
-    #response = urllib2.urlopen('http://api.openweathermap.org/data/2.5/weather' + '?' + 'q=%s' % location)
-    #data_json_dict = json.load(response)
-    #data_string = json.dumps(data_json_dict)
+    capital = state_info['capital']
+    location = state + ' ' + capital
+    location_no_spaces = sub_spaces(location)
 
-    print '''
-    <script>
+    sys.stderr.write(location_no_spaces)
+    sys.stderr.write('\n')
+    url = 'http://api.openweathermap.org/data/2.5/weather' + '?' + 'q=%s' % location_no_spaces
+    sys.stderr.write(url)
+    sys.stderr.write('\n')
+    response = urllib2.urlopen(url)
 
-    $( document ).ready(function() {
-    '''
-    print "$('#%s').css('fill', 'red')" % state
-    print '''
-    });
-    </script>
-    '''
+    data_json_dict = json.load(response)
+    sys.stderr.write('\n')
+    sys.stderr.write(json.dumps(data_json_dict))
+    sys.stderr.write('\n')
+    sys.stderr.write('\n')
+    temp_k = data_json_dict['main']['temp']
+    temp_f = kelvin_to_farenheit(temp_k)
+    color = temperature_to_color(temp_f)
+
+    print "$('#%s').css('fill', '%s')" % (state, color)
+print '''
+});
+</script>
+'''
