@@ -13,6 +13,10 @@ except ImportError:
 def sub_spaces(string):
     return re.sub(" ", "%20", string)
 
+def kelvin_to_farenheit(temp):
+    # formula from http://www.theweatherprediction.com/basic/conversions/
+    return 9.0/5.0 * (temp - 273.0) + 32.0
+
 # from https://github.com/tdlm/fun-with-python/blob/master/states_and_capitals.py
 states_caps = {
         'AL':{'state':'Alabama',        'capital':'Montgomery'},
