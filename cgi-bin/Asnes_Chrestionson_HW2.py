@@ -62,8 +62,8 @@ states_caps = {
         'MT':{'state':'Montana',        'capital':'Helena'},
         'NE':{'state':'Nebraska',       'capital':'Lincoln'},
         'NV':{'state':'Nevada',         'capital':'Carson City'},
-        'NH':{'state':'New Hampshire',  'capital':'Concord'},
-        'NJ':{'state':'New Jersey',     'capital':'Trenton'},
+        'NH':{'state':'New Hampshire',  'capital':'Concord'}, # TODO: concord doesn't work for some reason. Portsmouth does though
+        'NJ':{'state':'New Jersey',     'capital':'Trenton'}, # update: seems to be working now
         'NM':{'state':'New Mexico',     'capital':'Santa Fe'},
         'NY':{'state':'New York',       'capital':'Albany'},
         'NC':{'state':'North Carolina', 'capital':'Raleigh'},
