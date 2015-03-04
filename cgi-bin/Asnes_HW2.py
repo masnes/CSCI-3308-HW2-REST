@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 import json
+import re
 import urllib2
 import unicodedata
 
@@ -8,6 +9,9 @@ try:
     from urllib.parse import urlencode
 except ImportError:
     from urllib import urlencode
+
+def sub_spaces(string):
+    return re.sub(" ", "%20", string)
 
 # from https://github.com/tdlm/fun-with-python/blob/master/states_and_capitals.py
 states_caps = {
