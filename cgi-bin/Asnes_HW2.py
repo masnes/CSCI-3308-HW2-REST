@@ -17,6 +17,20 @@ def kelvin_to_farenheit(temp):
     # formula from http://www.theweatherprediction.com/basic/conversions/
     return 9.0/5.0 * (temp - 273.0) + 32.0
 
+def temperature_to_color(temp):
+    "assumes farenheit"
+    assert isinstance(temp, float)
+    if temp < 10.0:
+        return 'blue'
+    elif 10.0 <= temp < 30.0:
+        return 'cyan'
+    elif 30.0 <= temp < 50.0:
+        return 'green'
+    elif 50.0 <= temp < 80.0:
+        return 'orange'
+    else:
+        return 'red'
+
 # from https://github.com/tdlm/fun-with-python/blob/master/states_and_capitals.py
 states_caps = {
         'AL':{'state':'Alabama',        'capital':'Montgomery'},
