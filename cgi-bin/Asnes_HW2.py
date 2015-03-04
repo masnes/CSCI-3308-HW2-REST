@@ -83,12 +83,11 @@ states_caps = {
         'WV':{'state':'West Virginia',  'capital':'Charleston'},
         'WI':{'state':'Wisconsin',      'capital':'Madison'},
         'WY':{'state':'Wyoming',        'capital':'Cheyenne'},
-    }
+}
 
 # convert unicode to string
 # via http://stackoverflow.com/questions/1207457/convert-a-unicode-string-to-a-string-in-python-containing-extra-symbols
 #data = unicodedata.normalize('NFKC', data).encode('ascii', 'ignore')
-
 
 print "Content-type: text/html"
 print
