@@ -1,5 +1,4 @@
-#!/usr/bin/python2
-#TODO set this to python to reflect vm's lack of python2
+#!/usr/bin/env python2
 import json
 import urllib2
 import unicodedata
