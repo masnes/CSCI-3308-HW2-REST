@@ -5,12 +5,6 @@ import sys
 import urllib2
 import unicodedata
 
-# from github csparpa's pyowm
-try:
-    from urllib.parse import urlencode
-except ImportError:
-    from urllib import urlencode
-
 def sub_spaces(string):
     return re.sub(" ", "%20", string)
 
