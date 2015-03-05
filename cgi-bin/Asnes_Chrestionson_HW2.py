@@ -270,25 +270,25 @@ print '''
 $( document ).ready(function() {
 '''
 for state, state_info in states_caps.items():
+    capital = state_info['capital']
+    location = state + ' ' + capital
+    location_no_spaces = sub_spaces(location)
+
+    sys.stderr.write(location_no_spaces)
+    sys.stderr.write('\n')
+    url = 'http://api.openweathermap.org/data/2.5/weather' + '?' + 'q=%s' % location_no_spaces
+    sys.stderr.write(url)
+    sys.stderr.write('\n')
+    # next few json parsing lines from
+    # http://stackoverflow.com/questions/13921910/python-urllib2-receive-json-response-from-url
+    response = urllib2.urlopen(url)
+
+    data_json_dict = json.load(response)
+    sys.stderr.write('\n')
+    sys.stderr.write(json.dumps(data_json_dict))
+    sys.stderr.write('\n')
+    sys.stderr.write('\n')
     try:
-        capital = state_info['capital']
-        location = state + ' ' + capital
-        location_no_spaces = sub_spaces(location)
-
-        sys.stderr.write(location_no_spaces)
-        sys.stderr.write('\n')
-        url = 'http://api.openweathermap.org/data/2.5/weather' + '?' + 'q=%s' % location_no_spaces
-        sys.stderr.write(url)
-        sys.stderr.write('\n')
-        # next few json parsing lines from
-        # http://stackoverflow.com/questions/13921910/python-urllib2-receive-json-response-from-url
-        response = urllib2.urlopen(url)
-
-        data_json_dict = json.load(response)
-        sys.stderr.write('\n')
-        sys.stderr.write(json.dumps(data_json_dict))
-        sys.stderr.write('\n')
-        sys.stderr.write('\n')
         temp_k = data_json_dict['main']['temp']
         temp_f = kelvin_to_farenheit(temp_k)
         color = temperature_to_color(temp_f)
