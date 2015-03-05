@@ -81,6 +81,10 @@ states_caps = {
 }
 
 # convert unicode to string
+# Note (Michael Asnes): While the assignment instructions emphasized this part, I'm not seeing
+# any unicode in the json dumps, and the api is working fine without this part.
+# I'm leaving it in the assignment for documentation purposes, but it seems
+# completely uncessary
 # via http://stackoverflow.com/questions/1207457/convert-a-unicode-string-to-a-string-in-python-containing-extra-symbols
 #data = unicodedata.normalize('NFKC', data).encode('ascii', 'ignore')
 
