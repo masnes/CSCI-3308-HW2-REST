@@ -266,8 +266,6 @@ print '''
 $( document ).ready(function() {
 '''
 for state, state_info in states_caps.items():
-    # next two lines taken from
-    # http://stackoverflow.com/questions/13921910/python-urllib2-receive-json-response-from-url
     capital = state_info['capital']
     location = state + ' ' + capital
     location_no_spaces = sub_spaces(location)
@@ -277,6 +275,8 @@ for state, state_info in states_caps.items():
     url = 'http://api.openweathermap.org/data/2.5/weather' + '?' + 'q=%s' % location_no_spaces
     sys.stderr.write(url)
     sys.stderr.write('\n')
+    # next few json parsing lines from
+    # http://stackoverflow.com/questions/13921910/python-urllib2-receive-json-response-from-url
     response = urllib2.urlopen(url)
 
     data_json_dict = json.load(response)
